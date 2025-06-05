@@ -1,4 +1,3 @@
-import scps from "./public/scps.json";
 
 const sigmaForm = document.getElementById("sigma__form");
 const input = document.getElementById("sigma__input");
