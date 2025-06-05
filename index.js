@@ -48,20 +48,6 @@ function getScps(options) {
     });
 }
 
-// scps.forEach((scp) => {
-//   const listItem = document.createElement("li");
-//   listItem.classList.add("gallery__item");
-
-//   const link = document.createElement("a");
-//   console.log(scp);
-//   link.href = scp.url;
-//   link.textContent = scp.name;
-//   link.target = "_blank"; // Open in a new tab
-
-//   listItem.appendChild(link);
-//   list.appendChild(listItem);
-// });
-
 sigmaForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const nameS = input.value.trim();
@@ -79,58 +65,10 @@ sigmaForm.addEventListener("submit", (event) => {
       body: JSON.stringify(newScp),
     };
     getScps(optionsP);
-    const listItem = document.createElement("li");
-    const link = document.createElement("a");
-    link.href = urlS;
-    link.textContent = nameS;
-    link.target = "_blank"; // Open in a new tab
-    listItem.appendChild(link);
-    list.appendChild(listItem);
+    getScps(optionsG);
     input.value = ""; // Clear input field
     inputUrl.value = ""; // Clear URL field
   } else {
     alert("Please enter both a name and a URL.");
   }
 });
-
-async function addNewStudent(options) {
-  try {
-    const response = await fetch("http://localhost:3000/scps");
-    const result = await response.json();
-    console.log(result);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-document.querySelector("button").addEventListener("click", () => {
-  addNewStudent();
-});
-// sigmaForm.addEventListener("submit", (event) => {
-//   event.preventDefault();
-//   const nameS = input.value;
-//   const urlS = inputUrl.value.trim();
-//   if (input && inputUrl) {
-//     newObject.name = nameS;
-//     newObject.url = urlS;
-//     objects.push(newObject);
-//     createObjectList(objects, sigmaDiv);
-//   } else {
-//     alert("Please enter both a name and a URL.");
-//   }
-// });
-
-// function createObjectList(objects, sigmaDiv) {
-//   const list = document.createElement("ul");
-//   objects.forEach((obj) => {
-//     const listItem = document.createElement("li");
-//     const link = document.createElement("a");
-//     link.href = obj.url;
-//     link.textContent = obj.name;
-//     link.target = "_blank"; // Open in a new tab
-//     listItem.appendChild(link);
-//     list.appendChild(listItem);
-//     sigmaDiv.appendChild(list);
-//   });
-// }
-// createObjectList(objects, sigmaDiv);
