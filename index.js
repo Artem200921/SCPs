@@ -1,9 +1,9 @@
-
+const sigmaDiv = document.querySelector(".gallery");
 const sigmaForm = document.getElementById("sigma__form");
 const input = document.getElementById("sigma__input");
 const inputUrl = document.getElementById("sigma__input--url");
-const listS = document.querySelector("#scp");
-const listO = document.querySelector("#other");
+const listSW = document.querySelector("#scpW");
+const listOW = document.querySelector("#otherW");
 
 let optionsG = {
   method: "GET",
@@ -25,28 +25,69 @@ function getScps(options) {
     .then((data) => {
       console.log(data);
       // Assuming data is an array of SCP objects
-      data.forEach((scp) => {
-        const listItem = document.createElement("li");
-        listItem.classList.add("gallery__item");
+      setTimeout(() => {
+        data.forEach((scp) => {
+          const listItem = document.createElement("li");
+          listItem.classList.add("gallery__item");
 
-        const link = document.createElement("a");
-        link.href = scp.url;
-        link.textContent = scp.name;
-        link.target = "_blank"; // Open in a new tab
-        link.classList.add("gallery__link");
-        if (scp.name.includes("SCP")) {
-          listS.appendChild(listItem);
-        } else {
-          listO.appendChild(listItem);
-        }
+          const link = document.createElement("a");
+          const deleteButton = document.createElement("button");
 
-        listItem.appendChild(link);
-      });
+          deleteButton.classList.add("delete__button");
+          deleteButton.addEventListener("click", () => {
+            fetch(`http://localhost:3000/scps/${scp.id}`, {
+              method: "DELETE",
+            })
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                // Remove the list item from the DOM
+                setTimeout(() => {
+                  // Remove the list item after a short delay
+                  listItem.remove();
+                }, 500);
+              })
+              .catch((error) => {
+                console.error(
+                  "There was a problem with the delete operation:",
+                  error
+                );
+              });
+          });
+          link.href = scp.url;
+          link.textContent = scp.name;
+          link.target = "_blank"; // Open in a new tab
+          link.classList.add("gallery__link");
+          if (scp.name.includes("SCP")) {
+            listSW.appendChild(listItem);
+            deleteButton.textContent = "Annihilate";
+          } else {
+            listItem.classList.add("other__item");
+            listOW.appendChild(listItem);
+            deleteButton.textContent = "Delete";
+          }
+
+          listItem.appendChild(link);
+          listItem.appendChild(deleteButton);
+        });
+      }, 500);
     })
     .catch((error) => {
       console.error("There was a problem with the fetch operation:", error);
     });
 }
+
+sigmaDiv.addEventListener("click", (e) => {
+  if (e.target.classList.contains("gallery__item")) {
+    const link = e.target.children[0];
+    window.open(link.href, link.target);
+  }
+  // console.log(e);
+
+  // const link = item.querySelector(".gallery__link");
+  // window.open(link.href, link.target);
+});
 
 sigmaForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -64,11 +105,13 @@ sigmaForm.addEventListener("submit", (event) => {
       },
       body: JSON.stringify(newScp),
     };
-    getScps(optionsP);
+    fetch("http://localhost:3000/scps", optionsP);
+    input.value = "";
+    inputUrl.value = "";
     getScps(optionsG);
-    input.value = ""; // Clear input field
-    inputUrl.value = ""; // Clear URL field
   } else {
     alert("Please enter both a name and a URL.");
   }
+  listSW.innerHTML = "";
+  listOW.innerHTML = "";
 });

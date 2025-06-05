@@ -251,19 +251,34 @@
       "id": "72dd"
     },
     {
-      "id": "b996",
-      "name": "SCP-018",
-      "url": "https://scp-wiki.wikidot.com/scp-018"
-    },
-    {
       "id": "91d9",
       "name": "SCP-3114",
       "url": "https://scp-wiki.wikidot.com/scp-3114"
     },
     {
-      "id": "5844",
-      "name": "testte",
-      "url": "test"
+      "id": "aa38",
+      "name": "SCP-018",
+      "url": "https://scp-wiki.wikidot.com/scp-018"
+    },
+    {
+      "id": "6c3b",
+      "name": "Nobody likes snake",
+      "url": "https://scp-wiki.wikidot.com/nobody-likes-a-sneak"
+    },
+    {
+      "id": "99b7",
+      "name": "SCP-2521 Villians",
+      "url": "https://villains.fandom.com/wiki/SCP-2521"
+    },
+    {
+      "id": "28b0",
+      "name": "SCP-2521",
+      "url": "https://scp-wiki.wikidot.com/scp-2521"
+    },
+    {
+      "id": "565d",
+      "name": "SCP-268",
+      "url": "https://scp-wiki.wikidot.com/scp-268"
     }
   ]
 }

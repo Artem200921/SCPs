@@ -1,4 +1,4 @@
-body{
+body {
   background-color: black;
   color: white;
   display: flex;
@@ -12,22 +12,41 @@ body{
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-  flex-direction: column;
+
   align-items: center;
 }
-.gallery__link{
+.gallery__link {
   font-size: 30px;
   text-decoration: none;
   color: white;
 }
+.gallery__item {
+  background-color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  width: 300px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.other__item {
+  height: 150px;
+}
+.delete__button {
+  color: white;
+  background-color: red;
+  border: none;
+  margin-left: 5px;
+}
 
-.title{
+.title {
   font-size: 50px;
   margin-top: 20px;
   text-align: center;
   color: white;
 }
-.name{
+.name {
   font-size: 45px;
   margin-top: 10px;
   text-align: center;
