@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "handlebars": "^4.7.8",
+    "json-server": "^1.0.0-beta.3",
+    "parcel": "^2.15.2",
+    "parcel-bundler": "^1.12.5"
+  },
+  "name": "scps",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "parcel *.html",
+    "build": "parcel build *.html --public-url ./",
+    "server": "json-server public/scps.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Artem200921/SCPs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Artem200921/SCPs/issues"
+  },
+  "homepage": "https://github.com/Artem200921/SCPs#readme",
+  "description": ""
+}
