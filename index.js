@@ -15,7 +15,7 @@ let optionsG = {
 getScps(optionsG);
 
 function getScps(options) {
-  fetch("https://artem200921.github.io/Server/scps.json", options)
+  fetch("http://localhost:3000/scps", options)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -35,7 +35,7 @@ function getScps(options) {
 
           deleteButton.classList.add("delete__button");
           deleteButton.addEventListener("click", () => {
-            fetch(`https://artem200921.github.io/Server/scps.json/${scp.id}`, {
+            fetch(`http://localhost:3000/scps/${scp.id}`, {
               method: "DELETE",
             })
               .then((response) => {
@@ -105,7 +105,7 @@ sigmaForm.addEventListener("submit", (event) => {
       },
       body: JSON.stringify(newScp),
     };
-    fetch("https://artem200921.github.io/Server/scps.json", optionsP);
+    fetch("http://localhost:3000/scps", optionsP);
     input.value = "";
     inputUrl.value = "";
     getScps(optionsG);
