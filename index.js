@@ -1,5 +1,5 @@
 import { save, load } from "./modules/storage.js";
-import { nanoid } from "./node_modules/nanoid";
+// import { nanoid } from "./node_modules/nanoid"; // видалено nanoid
 import skps from "./nvsdjvdj.json";
 import { StorageSystem, SCPObject } from "./storageSystem.ts"; // додано імпорт
 
@@ -29,8 +29,11 @@ console.log(ssaps);
 // --- інтеграція StorageSystem ---
 const storage = new StorageSystem();
 ssaps.forEach((scp) => {
-  storage.add(new SCPObject(scp.id || nanoid(), scp.name, scp.url));
-  getScps(scp.name, scp.url, scp.id); // передаємо id
+  // Якщо id відсутній, генеруємо простий id
+  const id =
+    scp.id || Date.now().toString() + Math.random().toString(36).slice(2, 8);
+  storage.add(new SCPObject(id, scp.name, scp.url));
+  getScps(scp.name, scp.url, id);
 });
 // --- кінець інтеграції ---
 
@@ -102,10 +105,12 @@ function addScp(input, inputUrl) {
   const nameS = input.value.trim();
   const urlS = inputUrl.value.trim();
   if (nameS && urlS) {
+    // Генеруємо простий id
+    const id = Date.now().toString() + Math.random().toString(36).slice(2, 8);
     const newScp = {
       name: nameS,
       url: urlS,
-      id: nanoid(),
+      id: id,
     };
     storage.add(new SCPObject(newScp.id, newScp.name, newScp.url));
     ssaps.push(newScp);
