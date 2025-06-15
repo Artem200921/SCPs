@@ -1,4 +1,5 @@
 import { save, load } from "./modules/storage.js";
+ // імпортуємо franc для визначення мови
 // import skps from "./nvsdjvdj.json"; // видалити цей рядок
 import { StorageSystem, SCPObject } from "./storageSystem.js"; // змінено з .ts на .js
 
@@ -7,6 +8,8 @@ const sigmaForm = document.getElementById("sigma__form");
 const input = document.getElementById("sigma__input");
 const inputUrl = document.getElementById("sigma__input--url");
 const listSW = document.querySelector("#scpW");
+const listSF = document.querySelector("#otherF");
+const listSU = document.querySelector("#otherU");
 const listOW = document.querySelector("#otherW");
 
 const key = "scps";
@@ -39,9 +42,17 @@ async function init() {
     const link = document.createElement("a");
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("delete__button");
+    const isRussian = (text) => /[а-яё]/i.test(text);
+    const isUkrainian = (text) => /[ґєіїҐЄІЇ]/.test(text);
+    // const langdetect = require("langdetect");
+    
+
     if (name.includes("SCP")) {
       listSW.appendChild(listItem);
       deleteButton.textContent = "Annihilate";
+    } else if (isRussian(name)) {
+      deleteButton.textContent = "Удалить";
+      listSF.appendChild(listItem);
     } else {
       listItem.classList.add("other__item");
       listOW.appendChild(listItem);
@@ -107,13 +118,24 @@ async function init() {
         url: urlS,
         id: id,
       };
-      storage.add(new SCPObject(newScp.id, newScp.name, newScp.url));
-      ssaps.push(newScp);
-      save(key, ssaps);
-      console.log(ssaps);
+
       input.value = "";
       inputUrl.value = "";
-      getScps(newScp.name, newScp.url, newScp.id); // передаємо id
+      let array = [];
+      ssaps.forEach((scp) => {
+        array.push(scp.name);
+      })
+        if (array.includes(nameS)) {
+          alert("this scp already exists");
+        } else {
+          storage.add(new SCPObject(newScp.id, newScp.name, newScp.url));
+          ssaps.push(newScp);
+          save(key, ssaps);
+          console.log(ssaps);
+          getScps(newScp.name, newScp.url, newScp.id); // передаємо id
+        }
+      
+      
     } else {
       alert("Please enter both a name and a URL.");
     }
