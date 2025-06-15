@@ -1,5 +1,5 @@
 import { save, load } from "./modules/storage.js";
-import { nanoid } from "./nanoid";
+import { nanoid } from "nanoid";
 import skps from "./nvsdjvdj.json";
 import { StorageSystem, SCPObject } from "./storageSystem.ts"; // додано імпорт
 
