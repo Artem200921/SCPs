@@ -1,0 +1,21 @@
+{
+  "name": "storage-system",
+  "version": "1.0.0",
+  "description": "A simple storage system for managing data using local storage.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "storage",
+    "localstorage",
+    "data management"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^4.0.0"
+  }
+}

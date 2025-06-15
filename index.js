@@ -1,3 +1,8 @@
+import { save, load } from "./modules/storage.js";
+import { nanoid } from "nanoid";
+import skps from "./nvsdjvdj.json";
+import { StorageSystem, SCPObject } from "./storageSystem.ts"; // додано імпорт
+
 const sigmaDiv = document.querySelector(".gallery");
 const sigmaForm = document.getElementById("sigma__form");
 const input = document.getElementById("sigma__input");
@@ -5,77 +10,68 @@ const inputUrl = document.getElementById("sigma__input--url");
 const listSW = document.querySelector("#scpW");
 const listOW = document.querySelector("#otherW");
 
-let optionsG = {
-  method: "GET",
-  headers: {
-    "Content-Type": "application/json",
-  },
-};
+const key = "scps";
+// Save data
+const value = skps.skps;
 
-getScps(optionsG);
+// Load data
+const loadedValue = load("scps");
+console.log(loadedValue);
 
-function getScps(options) {
-  fetch("http://localhost:3000/scps", options)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-      // Assuming data is an array of SCP objects
-      setTimeout(() => {
-        data.forEach((scp) => {
-          const listItem = document.createElement("li");
-          listItem.classList.add("gallery__item");
+let ssaps = load(key);
+if (!ssaps) {
+  ssaps = skps.skps;
+  save(key, ssaps);
+}
 
-          const link = document.createElement("a");
-          const deleteButton = document.createElement("button");
+console.log(ssaps);
 
-          deleteButton.classList.add("delete__button");
-          deleteButton.addEventListener("click", () => {
-            fetch(`http://localhost:3000/scps/${scp.id}`, {
-              method: "DELETE",
-            })
-              .then((response) => {
-                if (!response.ok) {
-                  throw new Error("Network response was not ok");
-                }
-                // Remove the list item from the DOM
-                setTimeout(() => {
-                  // Remove the list item after a short delay
-                  listItem.remove();
-                }, 500);
-              })
-              .catch((error) => {
-                console.error(
-                  "There was a problem with the delete operation:",
-                  error
-                );
-              });
-          });
-          link.href = scp.url;
-          link.textContent = scp.name;
-          link.target = "_blank"; // Open in a new tab
-          link.classList.add("gallery__link");
-          if (scp.name.includes("SCP")) {
-            listSW.appendChild(listItem);
-            deleteButton.textContent = "Annihilate";
-          } else {
-            listItem.classList.add("other__item");
-            listOW.appendChild(listItem);
-            deleteButton.textContent = "Delete";
-          }
+// --- інтеграція StorageSystem ---
+const storage = new StorageSystem();
+ssaps.forEach((scp) => {
+  storage.add(new SCPObject(scp.id || nanoid(), scp.name, scp.url));
+  getScps(scp.name, scp.url, scp.id); // передаємо id
+});
+// --- кінець інтеграції ---
 
-          listItem.appendChild(link);
-          listItem.appendChild(deleteButton);
-        });
-      }, 500);
-    })
-    .catch((error) => {
-      console.error("There was a problem with the fetch operation:", error);
-    });
+function getScps(name, url, id) {
+  const listItem = document.createElement("li");
+  listItem.classList.add("gallery__item");
+  if (id) listItem.dataset.id = id; // додаємо data-id
+  const link = document.createElement("a");
+  const deleteButton = document.createElement("button");
+  deleteButton.classList.add("delete__button");
+  if (name.includes("SCP")) {
+    listSW.appendChild(listItem);
+    deleteButton.textContent = "Annihilate";
+  } else {
+    listItem.classList.add("other__item");
+    listOW.appendChild(listItem);
+    deleteButton.textContent = "Delete";
+  }
+  link.href = url;
+  link.textContent = name;
+  link.target = "_blank";
+  link.classList.add("gallery__link");
+  listItem.appendChild(link);
+  listItem.appendChild(deleteButton);
+
+  // --- додано обробник видалення ---
+  deleteButton.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const itemId = listItem.dataset.id;
+    // Видалити з storage
+    storage.remove(itemId);
+    // Видалити з ssaps
+    const idx = ssaps.findIndex((obj) => obj.id === itemId);
+    if (idx !== -1) {
+      ssaps.splice(idx, 1);
+      save(key, ssaps);
+    }
+    // Видалити з DOM
+    listItem.remove();
+  });
+  // --- кінець додавання ---
 }
 
 sigmaDiv.addEventListener("click", (e) => {
@@ -83,35 +79,42 @@ sigmaDiv.addEventListener("click", (e) => {
     const link = e.target.children[0];
     window.open(link.href, link.target);
   }
-  // console.log(e);
 
-  // const link = item.querySelector(".gallery__link");
-  // window.open(link.href, link.target);
+  const link = item.querySelector(".gallery__link");
+  window.open(link.href, link.target);
 });
 
 sigmaForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  console.log(ssaps);
+  setTimeout(() => {
+    if (input && inputUrl) {
+      addScp(input, inputUrl);
+      input.value = "";
+      inputUrl.value = "";
+    } else {
+      alert("Please enter both a name and a URL.");
+    }
+  }, 1000);
+});
+
+function addScp(input, inputUrl) {
   const nameS = input.value.trim();
   const urlS = inputUrl.value.trim();
   if (nameS && urlS) {
     const newScp = {
       name: nameS,
       url: urlS,
+      id: nanoid(),
     };
-    const optionsP = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newScp),
-    };
-    fetch("http://localhost:3000/scps", optionsP);
+    storage.add(new SCPObject(newScp.id, newScp.name, newScp.url));
+    ssaps.push(newScp);
+    save(key, ssaps);
+    console.log(ssaps);
     input.value = "";
     inputUrl.value = "";
-    getScps(optionsG);
+    getScps(newScp.name, newScp.url, newScp.id); // передаємо id
   } else {
     alert("Please enter both a name and a URL.");
   }
-  listSW.innerHTML = "";
-  listOW.innerHTML = "";
-});
+}

@@ -1,5 +1,5 @@
 {
-  "scps": [
+  "skps": [
     {
       "name": "SCP-049",
       "url": "https://scp-wiki.wikidot.com/scp-049",
@@ -151,11 +151,6 @@
       "id": "bea5"
     },
     {
-      "name": "SCP-939",
-      "url": "https://scp-wiki.wikidot.com/scp-939",
-      "id": "560d"
-    },
-    {
       "name": "Updated Amnestics Guide",
       "url": "https://scp-wiki.wikidot.com/updated-amnestics-guide",
       "id": "7aa5"
@@ -256,11 +251,6 @@
       "url": "https://scp-wiki.wikidot.com/scp-3114"
     },
     {
-      "id": "aa38",
-      "name": "SCP-018",
-      "url": "https://scp-wiki.wikidot.com/scp-018"
-    },
-    {
       "id": "6c3b",
       "name": "Nobody likes snake",
       "url": "https://scp-wiki.wikidot.com/nobody-likes-a-sneak"
@@ -276,9 +266,54 @@
       "url": "https://scp-wiki.wikidot.com/scp-2521"
     },
     {
-      "id": "565d",
-      "name": "SCP-268",
-      "url": "https://scp-wiki.wikidot.com/scp-268"
+      "id": "d077",
+      "name": "SCP-3000",
+      "url": "https://scp-wiki.wikidot.com/scp-3000"
+    },
+    {
+      "id": "8e41",
+      "name": "Updated Amnestics Guide",
+      "url": "https://scp-wiki.wikidot.com/updated-amnestics-guide"
+    },
+    {
+      "id": "dbb5",
+      "name": "A Laymen's Guide to Tagging",
+      "url": "https://scp-wiki.wikidot.com/a-laymen-s-guide-to-tagging"
+    },
+    {
+      "id": "9569",
+      "name": "Guide Hub",
+      "url": "https://scp-wiki.wikidot.com/guide-hub"
+    },
+    {
+      "id": "d7c9",
+      "name": "Обновлённая классификация амнезиаков",
+      "url": "https://scpfoundation.net/updated-amnestics-guide"
+    },
+    {
+      "id": "7ddb",
+      "name": "Facilities locations",
+      "url": "https://scp-wiki.wikidot.com/secure-facilities-locations"
+    },
+    {
+      "id": "cfb9",
+      "name": "Sandbox",
+      "url": "https://scp-sandbox-3.wikidot.com/"
+    },
+    {
+      "id": "aeb3",
+      "name": "Kiryu Labs Hub",
+      "url": "https://scp-wiki.wikidot.com/kiryu-labs-hub"
+    },
+    {
+      "id": "8fea",
+      "name": "SCP-CN-2626",
+      "url": "https://scp-wiki.wikidot.com/scp-cn-2626"
+    },
+    {
+      "id": "fec7",
+      "name": "Site-19 Facility 23 Dossier",
+      "url": "https://scp-wiki.wikidot.com/experiment-log-914-hub"
     }
   ]
 }
