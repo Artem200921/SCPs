@@ -1,0 +1,77 @@
+* {
+  transition: all 0.2s cubic-bezier(.21, .24, .58, .98);
+}
+body {
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.gallery {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+
+  align-items: center;
+}
+.gallery__link {
+  font-size: 30px;
+  text-decoration: none;
+  color: white;
+}
+.gallery__item {
+  background-color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  width: 300px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.other__item {
+  height: 150px;
+}
+.delete__button {
+  color: white;
+  background-color: red;
+  border: none;
+  margin-left: 5px;
+}
+.input {
+  width: 300px;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  background-color: #444;
+  color: white;
+  outline: none;
+  transition: background-color 0.6s;
+}
+.input:focus {
+  background-color: #555;
+}
+.input:hover {
+  background-color: #555;
+}
+.title {
+  font-size: 50px;
+  margin-top: 20px;
+  text-align: center;
+  color: white;
+}
+.name {
+  font-size: 45px;
+  margin-top: 10px;
+  text-align: center;
+  color: white;
+}
+
+
+/*# sourceMappingURL=/style.e308ff8e.css.map */
