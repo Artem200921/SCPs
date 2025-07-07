@@ -53,11 +53,9 @@ function addScpTest(input, inputUrl) {
   const urlS = inputUrl.value.trim();
   if (nameS && urlS) {
     // Генеруємо простий id
-    const id = Date.now().toString() + Math.random().toString(36).slice(2, 8);
     const newScp = {
       name: nameS,
       url: urlS,
-      id: id,
     };
 
     const options = {
@@ -71,7 +69,7 @@ function addScpTest(input, inputUrl) {
 
     input.value = "";
     inputUrl.value = "";
-    getScpsTest(newScp.name, newScp.url, newScp.id); // передаємо id
+    getScpsTest(newScp.name, newScp.url); // передаємо id
   } else {
     alert("Please enter both a name and a URL.");
   }
