@@ -11,7 +11,7 @@ export class SCPObject {
 }
 
 export class StorageSystem {
-    private storage: SCPObject[] = [];
+ storage: SCPObject[] = [];
 
     add(object: SCPObject): void {
         this.storage.push(object);
