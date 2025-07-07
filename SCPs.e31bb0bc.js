@@ -292,7 +292,6 @@ var listSFTest = document.querySelector("#otherF_test");
 var listOWTest = document.querySelector("#otherW_test");
 var testInput = document.querySelector("#test__input");
 var testInputUrl = document.querySelector("#test__input--url");
-var buttonTest = document.querySelector("#jaja");
 sigmaTransit.addEventListener("click", function () {
   testForm.classList.toggle("active");
   sigmadiven.classList.toggle("inactive");
@@ -307,22 +306,13 @@ var options = {
     "Content-Type": "application/json"
   }
 };
-scpFuncTest(options);
-function scpFuncTest(options) {
-  setTimeout(function () {
-    (0, _sigma.scpFunc)(options).then(function (result) {
-      console.log(result);
-      if (result && result.length > 0) {
-        result.forEach(function (scp) {
-          var id = scp.id || Date.now().toString() + Math.random().toString(36).slice(2, 8);
-          getScpsTest(scp.name, scp.url, id);
-        });
-      } else {
-        console.error("No SCPs found in the response.");
-      }
+setTimeout(function () {
+  (0, _sigma.scpFunc)(options).then(function (result) {
+    result.forEach(function (item) {
+      getScpsTest(item.name, item.url, item.id);
     });
-  }, 500);
-}
+  });
+}, 500);
 var key = "scps";
 var ssaps = (0, _storage.load)(key);
 function addScpTest(input, inputUrl) {
@@ -343,7 +333,7 @@ function addScpTest(input, inputUrl) {
       },
       body: JSON.stringify(newScp)
     };
-    scpFuncTest(_options);
+    (0, _sigma.scpFunc)(_options);
     input.value = "";
     inputUrl.value = "";
     getScpsTest(newScp.name, newScp.url, newScp.id); // передаємо id
@@ -361,17 +351,18 @@ function getScpsTest(name, url, id) {
   var isRussian = function isRussian(text) {
     return /[а-яё]/i.test(text);
   };
-  if (name.includes("SCP")) {
-    listSWTest.appendChild(testItem);
-    deleteButtonTest.textContent = "ЛИКВИДИРОВАТЬ";
-  } else if (isRussian(name)) {
-    deleteButtonTest.textContent = "Удалить";
-    listSFTest.appendChild(testItem);
-  } else {
-    testItem.classList.add("other__item");
-    listOWTest.appendChild(testItem);
-    deleteButtonTest.textContent = "Удалить";
-  }
+
+  // if (name.includes("SCP")) {
+  //   listSWTest.appendChild(testItem);
+  //   deleteButtonTest.textContent = "ЛИКВИДИРОВАТЬ";
+  // } else if (isRussian(name)) {
+  //   deleteButtonTest.textContent = "Удалить";
+  //   listSFTest.appendChild(testItem);
+  // } else {
+  testItem.classList.add("other__item");
+  listOWTest.appendChild(testItem);
+  deleteButtonTest.textContent = "Удалить";
+  // }
   test.href = url;
   test.textContent = name;
   test.target = "_blank";
@@ -548,7 +539,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55405" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55997" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
