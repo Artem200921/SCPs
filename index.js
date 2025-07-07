@@ -21,7 +21,6 @@ const listSFTest = document.querySelector("#otherF_test");
 const listOWTest = document.querySelector("#otherW_test");
 const testInput = document.querySelector("#test__input");
 const testInputUrl = document.querySelector("#test__input--url");
-const buttonTest = document.querySelector("#jaja");
 
 sigmaTransit.addEventListener("click", () => {
   testForm.classList.toggle("active");
@@ -38,24 +37,13 @@ const options = {
     "Content-Type": "application/json",
   },
 };
-scpFuncTest(options);
-function scpFuncTest(options) {
-  setTimeout(() => {
-    scpFunc(options).then((result) => {
-      console.log(result);
-      if (result && result.length > 0) {
-        result.forEach((scp) => {
-          const id =
-            scp.id ||
-            Date.now().toString() + Math.random().toString(36).slice(2, 8);
-          getScpsTest(scp.name, scp.url, id);
-        });
-      } else {
-        console.error("No SCPs found in the response.");
-      }
+setTimeout(() => {
+  scpFunc(options).then((result) => {
+    result.forEach((item) => {
+      getScpsTest(item.name, item.url, item.id);
     });
-  }, 500);
-}
+  });
+}, 500);
 
 const key = "scps";
 let ssaps = load(key);
@@ -79,7 +67,7 @@ function addScpTest(input, inputUrl) {
       },
       body: JSON.stringify(newScp),
     };
-    scpFuncTest(options);
+    scpFunc(options);
 
     input.value = "";
     inputUrl.value = "";
@@ -98,17 +86,17 @@ function getScpsTest(name, url, id) {
   const test = document.createElement("a");
   const isRussian = (text) => /[а-яё]/i.test(text);
 
-  if (name.includes("SCP")) {
-    listSWTest.appendChild(testItem);
-    deleteButtonTest.textContent = "ЛИКВИДИРОВАТЬ";
-  } else if (isRussian(name)) {
-    deleteButtonTest.textContent = "Удалить";
-    listSFTest.appendChild(testItem);
-  } else {
-    testItem.classList.add("other__item");
-    listOWTest.appendChild(testItem);
-    deleteButtonTest.textContent = "Удалить";
-  }
+  // if (name.includes("SCP")) {
+  //   listSWTest.appendChild(testItem);
+  //   deleteButtonTest.textContent = "ЛИКВИДИРОВАТЬ";
+  // } else if (isRussian(name)) {
+  //   deleteButtonTest.textContent = "Удалить";
+  //   listSFTest.appendChild(testItem);
+  // } else {
+  testItem.classList.add("other__item");
+  listOWTest.appendChild(testItem);
+  deleteButtonTest.textContent = "Удалить";
+  // }
   test.href = url;
   test.textContent = name;
   test.target = "_blank";
