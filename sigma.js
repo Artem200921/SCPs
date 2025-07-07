@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000/scps";
+const BASE_URL = "http://localhost:3001/scps";
 
 export async function scpFunc(options) {
   try {
