@@ -8,8 +8,38 @@ body {
   flex-direction: column;
   align-items: center;
 }
+.sigmadiv{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 #sigma__form{
   position: fixed;
+  
+}
+.linkForNightmare{
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  z-index: 70;
+}
+.formSigma{
+  width: 98vw;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  position: absolute;
+}
+.active{
+  display: flex;
+}
+.inactive{
+  display: none;
 }
 #si{
   width: 50px;
@@ -28,12 +58,22 @@ body {
   padding-top: 50px;
   align-items: center;
 }
-.gallery__link {
+.gal {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  padding-top: 50px;
+  align-items: center;
+}
+.gal__link {
   font-size: 30px;
   text-decoration: none;
   color: white;
 }
-.gallery__item {
+.gal__item {
   background-color: #333;
   padding: 10px;
   border-radius: 5px;

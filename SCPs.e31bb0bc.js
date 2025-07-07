@@ -201,28 +201,184 @@ var StorageSystem = exports.StorageSystem = /*#__PURE__*/function () {
     }
   }]);
 }();
+},{}],"sigma.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.scpFunc = scpFunc;
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+var BASE_URL = "http://localhost:3000/scps";
+function scpFunc(_x) {
+  return _scpFunc.apply(this, arguments);
+} // const newStudent = {
+//   name: "Artem",
+// };
+// const options = {
+//   method: "POST",
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+//   body: JSON.stringify(newStudent),
+// };
+// async function addNewStudent() {
+//   try {
+//     const response = await fetch("items/books.json", options);
+//     const result = await response.json();
+//     console.log(result);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+// document.querySelector("button").addEventListener("click", () => {
+//   addNewStudent();
+// });
+function _scpFunc() {
+  _scpFunc = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(options) {
+    var response, result, _t;
+    return _regenerator().w(function (_context) {
+      while (1) switch (_context.n) {
+        case 0:
+          _context.p = 0;
+          _context.n = 1;
+          return fetch("".concat(BASE_URL), options);
+        case 1:
+          response = _context.v;
+          _context.n = 2;
+          return response.json();
+        case 2:
+          result = _context.v;
+          return _context.a(2, result);
+        case 3:
+          _context.p = 3;
+          _t = _context.v;
+          console.log(_t);
+        case 4:
+          return _context.a(2);
+      }
+    }, _callee, null, [[0, 3]]);
+  }));
+  return _scpFunc.apply(this, arguments);
+}
 },{}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _storage = require("./modules/storage.js");
 var _storageSystem = require("./storageSystem.js");
+var _sigma = require("./sigma.js");
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; } // імпортуємо franc для визначення мови
 // import skps from "./nvsdjvdj.json"; // видалити цей рядок
 // змінено з .ts на .js
-
 var sigmaDiv = document.querySelector(".gallery");
+var sigmadiven = document.querySelector(".sigmadiv");
 var sigmaForm = document.getElementById("sigma__form");
 var input = document.getElementById("sigma__input");
 var inputUrl = document.getElementById("sigma__input--url");
 var listSW = document.querySelector("#scpW");
 var listSF = document.querySelector("#otherF");
-var listSU = document.querySelector("#otherU");
 var listOW = document.querySelector("#otherW");
+var sigmaTransit = document.querySelector(".linkForNightmare");
+var testForm = document.querySelector(".formSigma");
+var testGallery = document.querySelector(".test_gallery");
+var listSWTest = document.querySelector("#scpW_test");
+var listSFTest = document.querySelector("#otherF_test");
+var listOWTest = document.querySelector("#otherW_test");
+var testInput = document.querySelector("#test__input");
+var testInputUrl = document.querySelector("#test__input--url");
+var buttonTest = document.querySelector("#jaja");
+sigmaTransit.addEventListener("click", function () {
+  testForm.classList.toggle("active");
+  sigmadiven.classList.toggle("inactive");
+});
+testForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  addScpTest(testInput, testInputUrl);
+});
+var options = {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json"
+  }
+};
+scpFuncTest(options);
+function scpFuncTest(options) {
+  setTimeout(function () {
+    (0, _sigma.scpFunc)(options).then(function (result) {
+      console.log(result);
+      if (result && result.length > 0) {
+        result.forEach(function (scp) {
+          var id = scp.id || Date.now().toString() + Math.random().toString(36).slice(2, 8);
+          getScpsTest(scp.name, scp.url, id);
+        });
+      } else {
+        console.error("No SCPs found in the response.");
+      }
+    });
+  }, 500);
+}
 var key = "scps";
 var ssaps = (0, _storage.load)(key);
+function addScpTest(input, inputUrl) {
+  var nameS = input.value.trim();
+  var urlS = inputUrl.value.trim();
+  if (nameS && urlS) {
+    // Генеруємо простий id
+    var id = Date.now().toString() + Math.random().toString(36).slice(2, 8);
+    var newScp = {
+      name: nameS,
+      url: urlS,
+      id: id
+    };
+    var _options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newScp)
+    };
+    scpFuncTest(_options);
+    input.value = "";
+    inputUrl.value = "";
+    getScpsTest(newScp.name, newScp.url, newScp.id); // передаємо id
+  } else {
+    alert("Please enter both a name and a URL.");
+  }
+}
+function getScpsTest(name, url, id) {
+  var testItem = document.createElement("li");
+  testItem.classList.add("gal__item");
+  if (id) testItem.dataset.id = id;
+  var deleteButtonTest = document.createElement("button");
+  deleteButtonTest.classList.add("delete__button");
+  var test = document.createElement("a");
+  var isRussian = function isRussian(text) {
+    return /[а-яё]/i.test(text);
+  };
+  if (name.includes("SCP")) {
+    listSWTest.appendChild(testItem);
+    deleteButtonTest.textContent = "ЛИКВИДИРОВАТЬ";
+  } else if (isRussian(name)) {
+    deleteButtonTest.textContent = "Удалить";
+    listSFTest.appendChild(testItem);
+  } else {
+    testItem.classList.add("other__item");
+    listOWTest.appendChild(testItem);
+    deleteButtonTest.textContent = "Удалить";
+  }
+  test.href = url;
+  test.textContent = name;
+  test.target = "_blank";
+  test.classList.add("gal__link");
+  testItem.appendChild(test);
+  testItem.appendChild(deleteButtonTest);
+}
 function init() {
   return _init.apply(this, arguments);
 }
@@ -264,7 +420,7 @@ function _init() {
           };
           getScps = function _getScps(name, url, id) {
             var listItem = document.createElement("li");
-            listItem.classList.add("gallery__item");
+            listItem.classList.add("gal__item");
             if (id) listItem.dataset.id = id; // додаємо data-id
             var link = document.createElement("a");
             var deleteButton = document.createElement("button");
@@ -291,7 +447,7 @@ function _init() {
             link.href = url;
             link.textContent = name;
             link.target = "_blank";
-            link.classList.add("gallery__link");
+            link.classList.add("gal__link");
             listItem.appendChild(link);
             listItem.appendChild(deleteButton);
 
@@ -341,10 +497,10 @@ function _init() {
           sigmaDiv.addEventListener("click", function (e) {
             if (e.target.classList.contains("gallery__item")) {
               var _link = e.target.children[0];
-              window.open(_link.href, _link.target);
+              // window.open(link.href, link.target);
             }
             var link = item.querySelector(".gallery__link");
-            window.open(link.href, link.target);
+            // window.open(link.href, link.target);
           });
           sigmaForm.addEventListener("submit", function (event) {
             event.preventDefault();
@@ -367,7 +523,7 @@ function _init() {
   return _init.apply(this, arguments);
 }
 init(); // Викликаємо асинхронну ініціалізацію
-},{"./modules/storage.js":"modules/storage.js","./storageSystem.js":"storageSystem.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./modules/storage.js":"modules/storage.js","./storageSystem.js":"storageSystem.js","./sigma.js":"sigma.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -392,7 +548,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52742" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55405" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
