@@ -4,29 +4,63 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SCPs</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <form action="" id="sigma__form">
-      <input type="text" id="sigma__input" placeholder="Ввести ім'я статті" class="input"/>
-      <input type="text" id="sigma__input--url" placeholder="Ввести силочку" class="input"/>
-      <button id="si" type="submit"></button>
-    </form>
-    <div class="gallery">
-      <h2 class="name">SCPs:</h2>
-      <ul id="scpW" class="gallery">
-      </ul>
-      <h2 class="name">Other:</h2>
-      <ul id="otherW" class="gallery">
-      </ul>
-      <h2 class="name">Другое:</h2>
-      <ul id="otherF" class="gallery">
-      </ul>
-      <h2 class="name">Інше:</h2>
-      <ul id="otherU" class="gallery">
-      </ul>
+    <button class="linkForNightmare">Sigma transit</button>
+    <div class="sigmadiv">
+      <form action="" id="sigma__form">
+        <input
+          type="text"
+          id="sigma__input"
+          placeholder="Ввести ім'я статті"
+          class="input"
+        />
+        <input
+          type="text"
+          id="sigma__input--url"
+          placeholder="Ввести силочку"
+          class="input"
+        />
+        <button id="si" type="submit"></button>
+      </form>
+      <div class="gallery gal">
+        <h2 class="name">SCPs:</h2>
+        <ul id="scpW" class="gallery"></ul>
+        <h2 class="name">Other:</h2>
+        <ul id="otherW" class="gallery"></ul>
+        <h2 class="name">Другое:</h2>
+        <ul id="otherF" class="gallery"></ul>
+        <h2 class="name">Інше:</h2>
+        <ul id="otherU" class="gallery"></ul>
+      </div>
     </div>
-    
-    <script type="module" src="./index.js" ></script>
+    <div class="formSigma">
+      <form action="">
+        <input
+          type="text"
+          id="test__input"
+          placeholder="Ввести ім'я статті"
+          class="input"
+        />
+        <input
+          type="text"
+          id="test__input--url"
+          placeholder="Ввести силочку"
+          class="input"
+        />
+        <button id="jaja" type="submit">Submit</button>
+      </form>
+      <ul class=""></ul>
+      <div class="test_gallery gal">
+        <h2 class="name">SCPs:</h2>
+        <ul id="scpW_test" class="gallery"></ul>
+        <h2 class="name">Other:</h2>
+        <ul id="otherW_test" class="gallery"></ul>
+        <h2 class="name">Другое:</h2>
+        <ul id="otherF_test" class="gallery"></ul>
+      </div>
+    </div>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
